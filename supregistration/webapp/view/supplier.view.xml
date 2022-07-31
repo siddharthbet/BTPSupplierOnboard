@@ -1,0 +1,52 @@
+<mvc:View controllerName="com.hv.supregistration.controller.supplier"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    >
+    <Page id="page" showHeader="false">
+    <content>
+    	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChange354wideDual"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{i18n>title}"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<core:Title text="General Information" />
+				<Label text="Name" />
+				<Input id="name"  value="" width="50%"/>
+				<Label text="City" />
+				<Input id="city" value="" width="50%"/>
+				<Label text="Country" />
+				<Input id="country" value="" width="50%"/>
+				<Label text="Language" />
+                <Input id="lang" value="" width="50%"/>
+				<core:Title text="Product Details" />
+				<Label text="Product" />
+                <Input id="product" value="" width="50%"/>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+    </content>
+    <footer >
+                    <Toolbar >
+                        <ToolbarSpacer/>
+                        <Button id="btnSubmit_rv" text="Submit" press="onSubmit" type="Emphasized" />
+                    </Toolbar>
+                </footer>
+    </Page>
+</mvc:View>

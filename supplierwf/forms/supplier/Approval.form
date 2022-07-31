@@ -1,0 +1,109 @@
+{
+    "id": "approval",
+    "schemaVersion": "1.1.0",
+    "name": "Approval",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "general",
+            "type": "section",
+            "title": "General",
+            "content": [
+                {
+                    "id": "name",
+                    "type": "string",
+                    "label": "Name",
+                    "readOnly": true,
+                    "value": "${context.supplier.name}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "name_1",
+                    "type": "string",
+                    "label": "City",
+                    "readOnly": true,
+                    "value": "${context.supplier.city}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "name_1_1",
+                    "type": "string",
+                    "label": "Country",
+                    "readOnly": true,
+                    "value": "${context.supplier.country}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "name_1_2",
+                    "type": "string",
+                    "label": "Language",
+                    "readOnly": true,
+                    "value": "${context.supplier.language}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        },
+        {
+            "id": "business",
+            "type": "section",
+            "title": "Business",
+            "content": [
+                {
+                    "id": "product",
+                    "type": "string",
+                    "label": "Product",
+                    "readOnly": true,
+                    "value": "${context.supplier.product}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        },
+        {
+            "id": "comments",
+            "type": "section",
+            "title": "Comments",
+            "content": [
+                {
+                    "id": "comments",
+                    "type": "string",
+                    "label": "Comments",
+                    "readOnly": false,
+                    "value": "${context.supplier.comment}",
+                    "control": {
+                        "type": "TextArea",
+                        "properties": {
+                            "height": "medium"
+                        }
+                    },
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        }
+    ],
+    "decisions": [
+        {
+            "id": "approve",
+            "text": "Approve",
+            "decisionType": "positive"
+        },
+        {
+            "id": "reject",
+            "text": "Reject",
+            "decisionType": ""
+        }
+    ]
+}

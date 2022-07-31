@@ -1,0 +1,16 @@
+{
+    "id": "notificationreject",
+    "schemaVersion": "1.1.0",
+    "name": "NotificationReject",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": true,
+    "content": [],
+    "decisions": [
+        {
+            "id": "continue",
+            "text": "Continue",
+            "decisionType": ""
+        }
+    ]
+}

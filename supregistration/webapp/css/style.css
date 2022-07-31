@@ -1,0 +1,18 @@
+/* Enter your custom styles here */
+.RecastApp .RecastAppExpander--onboarding, .CaiApp .CaiAppExpander--onboarding {
+    bottom:46px;
+}
+
+.RecastApp .RecastAppExpander, .CaiApp .CaiAppExpander{
+    right: 85px!important;
+    bottom: 6px!important;
+background-color:#0a6ed1!important;
+padding:0.35rem 0.01rem!important;
+font-size:0.875rem!important;
+}
+.RecastApp .RecastAppExpander--logo, .CaiApp .CaiAppExpander--logo{
+    margin-right: 0.5rem!important;
+    /* width: 23px; */
+    width: 13px!important;
+    height: 13px!important;
+}

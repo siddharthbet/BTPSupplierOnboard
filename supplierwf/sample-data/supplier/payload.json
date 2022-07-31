@@ -1,0 +1,12 @@
+{
+	"supplier": {
+		"name": "Brian B",
+		"city": "Atlanta",
+		"country": "US",
+		"language": "EN",
+        "product": "Printer"
+	},
+	"approver": "",
+	"ruleRequest": "",
+	"ruleResponse": ""
+}

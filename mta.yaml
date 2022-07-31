@@ -1,0 +1,104 @@
+_schema-version: "3.2"
+ID: zsuprej
+version: 0.0.1
+modules:
+- name: zsuprej-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: zsuprej-destination-service
+    parameters:
+      content-target: true
+  - name: zsuprej_html_repo_host
+    parameters:
+      service-key:
+        name: zsuprej_html_repo_host-key
+  - name: uaa_zsuprej
+    parameters:
+      service-key:
+        name: uaa_zsuprej-key
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: zsupreg_zsuprej_html_repo_host
+          ServiceInstanceName: zsuprej-html5-app-host-service
+          ServiceKeyName: zsuprej_html_repo_host-key
+          sap.cloud.service: zsupreg
+        - Authentication: OAuth2UserTokenExchange
+          Name: zsupreg_uaa_zsuprej
+          ServiceInstanceName: zsuprej-xsuaa-service
+          ServiceKeyName: uaa_zsuprej-key
+          sap.cloud.service: zsupreg
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: zsuprej-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: zsuprej_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - comhvsupregistration.zip
+      name: comhvsupregistration
+      target-path: resources/
+- name: comhvsupregistration
+  type: html5
+  path: supregistration
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: supplierwf
+  type: com.sap.application.content
+  path: supplierwf
+  requires:
+  - name: wm_workflow
+    parameters:
+      content-target: true
+resources:
+- name: zsuprej-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: zsuprej-destination-service
+    service-plan: lite
+- name: zsuprej_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: zsuprej-html5-app-host-service
+    service-plan: app-host
+- name: uaa_zsuprej
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: zsuprej-xsuaa-service
+    service-plan: application
+- name: wm_workflow
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: workflow
+    service-plan: lite
+parameters:
+  deploy_mode: html5-repo
